@@ -17,7 +17,7 @@ export function Confirmation(){
         <SafeAreaView style={styles.container}>
             <View style={styles.content}>
                 <Text style={styles.emoji}>
-                    😆
+                    😆 
                 </Text>
 
                 <Text style={styles.title}>
@@ -28,10 +28,9 @@ export function Confirmation(){
                     Agora vamos começar a cuidar das suas
                     plantinhas com muito cuidado. 
                 </Text>
-            </View>
-
-            <View style={styles.footer}>
-                <Button />
+                <View style={styles.footer}>
+                    <Button />
+                </View>
             </View>
         </SafeAreaView>
     ) 
@@ -70,7 +69,8 @@ const styles = StyleSheet.create({
     },
     footer: {
         width: '100%',
-        paddingHorizontal: 75        
+        paddingHorizontal: 50,
+        marginTop: 20        
     }
 
 })

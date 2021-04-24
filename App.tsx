@@ -8,7 +8,7 @@ import {
 
 import AppLoading from 'expo-app-loading';
 
-import { Confirmation } from './src/pages/Confirmation'; 
+import Routes from './src/routes'; 
 
 export default function App(){
    
@@ -17,12 +17,12 @@ export default function App(){
     Jost_600SemiBold
   });
 
-  // if(fontsLoaded){
-  //   return <AppLoading />
-  // }
+  if(!fontsLoaded){
+    return <AppLoading />
+  }
    
   return (
-    <Confirmation />
+    <Routes />
   )
 }
 
