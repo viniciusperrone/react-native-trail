@@ -10,6 +10,8 @@ import {
   SafeAreaView 
 } from 'react-native';
 
+import { useNavigation } from '@react-navigation/core';
+
 import { Entypo } from '@expo/vector-icons';
  
 import wateringImg from '../assets/watering.png';
@@ -18,6 +20,16 @@ import colors from '../../styles/colors';
 import fonts from '../../styles/fonts';
 
 export function Welcome(){
+
+  const navigation = useNavigation();
+  
+  function handleStart(){
+    navigation.navigate('UserIdentification');
+  }
+
+  function handleOnSubmit(){
+    navigation.navigate('Confirm');
+  }
 
   return(
     <SafeAreaView style={styles.container}>
@@ -40,6 +52,7 @@ export function Welcome(){
         <TouchableOpacity 
               style={styles.button}
               activeOpacity={0.7}
+              onPress={handleStart}
           >
               <Entypo name="chevron-right" style={styles.buttonIcon}/>
         </TouchableOpacity>

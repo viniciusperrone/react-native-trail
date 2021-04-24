@@ -10,11 +10,17 @@ import {
 import colors from '../../styles/colors';
 import fonts from '../../styles/fonts';
 
-export default function Button(){
+interface ButtonProps extends TouchableOpacityProps{
+    title: string;
+}
+export default function Button( { title, ...rest } : ButtonProps ){
     return(
-        <TouchableOpacity style={styles.conteiner}>
+        <TouchableOpacity 
+            style={styles.conteiner}
+            {...rest}
+        >
             <Text style={styles.text}>
-                Confirmar
+                { title }
             </Text>
         </TouchableOpacity>
     )
