@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 import { 
-    SafeAreaViewBase, 
+    SafeAreaView, 
     StyleSheet, 
     Text, 
     View, 
@@ -15,7 +15,7 @@ import Button from '../../src/components/Button';
 import colors from '../../styles/colors';
 import fonts from '../../styles/fonts';
 
-export default function UserIdentifications(){
+export function UserIdentification(){
     
     const [isFocused,setIsFocused] = useState(false);
     const [isFilled, setIsFilled] = useState(false);
@@ -36,7 +36,7 @@ export default function UserIdentifications(){
     }
 
     return(
-        <SafeAreaViewBase style={styles.conteiner}>
+        <SafeAreaView style={styles.conteiner}>
             <KeyboardAvoidingView
                 style={styles.conteiner}
                 behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
@@ -47,10 +47,10 @@ export default function UserIdentifications(){
                             <Text style={styles.emoji}>
                                 { isFilled ? '😊' : '😆'}
                             </Text>
-                            
+                             
                             <Text style={styles.title}>
                                 Como podemos {'\n'}
-                                chamar você
+                                chamar você? 
                             </Text>
 
                             <TextInput 
@@ -72,7 +72,7 @@ export default function UserIdentifications(){
                     </View>
                 </View>
             </KeyboardAvoidingView>
-        </SafeAreaViewBase>
+        </SafeAreaView>
     )
 }
 

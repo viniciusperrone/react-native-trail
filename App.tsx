@@ -8,7 +8,7 @@ import {
 
 import AppLoading from 'expo-app-loading';
 
-import UserIdentification from './src/pages/UseIdentification';
+import { Confirmation } from './src/pages/Confirmation'; 
 
 export default function App(){
    
@@ -17,10 +17,12 @@ export default function App(){
     Jost_600SemiBold
   });
 
-  if(fontsLoaded){
-    return <AppLoading />
-  }
-  
-  return <UserIdentification />
+  // if(fontsLoaded){
+  //   return <AppLoading />
+  // }
+   
+  return (
+    <Confirmation />
+  )
 }
 

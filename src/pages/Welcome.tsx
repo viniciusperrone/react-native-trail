@@ -1,5 +1,15 @@
-import React, { useState } from 'react';
-import { Text, View, Image, StyleSheet, TouchableOpacity, Dimensions, SafeAreaViewBase } from 'react-native';
+import React from 'react';
+
+import { 
+  Text, 
+  View, 
+  Image, 
+  StyleSheet, 
+  TouchableOpacity, 
+  Dimensions, 
+  SafeAreaView 
+} from 'react-native';
+
 import { Entypo } from '@expo/vector-icons';
  
 import wateringImg from '../assets/watering.png';
@@ -7,11 +17,11 @@ import wateringImg from '../assets/watering.png';
 import colors from '../../styles/colors';
 import fonts from '../../styles/fonts';
 
-export default function App(){
+export function Welcome(){
 
   return(
-    <SafeAreaViewBase style={styles.container}>
-      <View>
+    <SafeAreaView style={styles.container}>
+      <View style={styles.wrapper}>
         <Text style={styles.title}>
           Gerencie {'\n'} suas plantas de{'\n'} forma fácil
         </Text>
@@ -32,15 +42,16 @@ export default function App(){
               activeOpacity={0.7}
           >
               <Entypo name="chevron-right" style={styles.buttonIcon}/>
-          </TouchableOpacity>
-        </View>
-    </SafeAreaViewBase> 
+        </TouchableOpacity>
+      </View>
+    </SafeAreaView> 
   )
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    width: '100%'
   },
   wrapper: {
     flex: 1,
