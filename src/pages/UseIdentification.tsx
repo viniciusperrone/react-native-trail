@@ -42,7 +42,7 @@ export function UserIdentification(){
     }
 
     function handleSubmit(){
-        navigation.navigate('Confirm');
+        navigation.navigate('Confirmation');
       }
 
     return(
