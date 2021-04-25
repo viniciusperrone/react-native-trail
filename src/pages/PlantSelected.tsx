@@ -4,11 +4,13 @@ import {
     Text, 
     View,
     StyleSheet,
-    FlatList
+    FlatList,
+    TextStyleIOS
 } from 'react-native';
 
 import { Header } from '../components/Header';
 import { EnviromentButton } from '../components/EnviromentButton';
+import { PlantCardPrimary } from '../components/PlantCardPrimary';
 
 import colors from '../../styles/colors';
 import fonts from '../../styles/fonts';
@@ -20,9 +22,23 @@ interface EnvironmentProps{
     title: string;
 }
 
+interface PlantsProps{
+    id: number;
+    name: string;
+    about: string;
+    water_tips: string;
+    photo: string;
+    environments: string;
+    frequency: {
+        times: number;
+        repeat_every: string;
+    }
+}
+
 export function PlantSelected(){
 
     const [environments, setEnvironments] = useState<EnvironmentProps[]>([]);
+    const [plants, setPlants] = useState<PlantsProps[]>([]);
 
 
     useEffect(() => {
@@ -40,6 +56,17 @@ export function PlantSelected(){
 
         fetchEnviroment();
     }, []);
+
+    useEffect(() => {
+        async function fetchPlants(){
+            const { data } = await api.get('plants');
+
+            setEnvironments(data);
+        }
+
+        fetchPlants();
+    }, []);
+
     return(
         <View style={styles.container}>
             <View style={styles.header}>
@@ -64,6 +91,15 @@ export function PlantSelected(){
                     horizontal
                     showsHorizontalScrollIndicator={false}
                     contentContainerStyle={styles.enviromentList}
+                />
+            </View>
+
+            <View style={styles.plants}>
+                <FlatList 
+                    data={plants}
+                    renderItem={({ item }) =>(
+                        <PlantCardPrimary data={item}/>
+                    )}
                 />
             </View>
         </View>
@@ -97,5 +133,11 @@ const styles = StyleSheet.create({
         paddingBottom: 5,
         marginLeft: 32,
         marginVertical: 32
+    },
+    plants: {
+        flex: 1,
+        paddingHorizontal: 32,
+        justifyContent: 'center',
+
     }
 })
