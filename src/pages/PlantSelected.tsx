@@ -29,7 +29,13 @@ export function PlantSelected(){
         async function fetchEnviroment(){
             const { data } = await api.get('plants_environments');
 
-            setEnvironments(data);
+            setEnvironments([
+                {
+                    key: 'all',
+                    title: 'Todos'
+                },
+                ...data
+            ]);
         }
 
         fetchEnviroment();
@@ -51,8 +57,8 @@ export function PlantSelected(){
             <View>
                 <FlatList 
                     data={environments}
-                    renderItem={() => (
-                        <EnviromentButton title="cozinha" active/>
+                    renderItem={({ item }) => (
+                        <EnviromentButton title={item.title} active/>
                         
                     )}
                     horizontal
