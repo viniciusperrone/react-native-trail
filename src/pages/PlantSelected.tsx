@@ -61,7 +61,7 @@ export function PlantSelected(){
         async function fetchPlants(){
             const { data } = await api.get('plants');
 
-            setEnvironments(data);
+            setPlants(data);
         }
 
         fetchPlants();
