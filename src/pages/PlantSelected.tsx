@@ -4,8 +4,7 @@ import {
     Text, 
     View,
     StyleSheet,
-    FlatList,
-    TextStyleIOS
+    FlatList
 } from 'react-native';
 
 import { Header } from '../components/Header';
@@ -39,8 +38,20 @@ export function PlantSelected(){
 
     const [environments, setEnvironments] = useState<EnvironmentProps[]>([]);
     const [plants, setPlants] = useState<PlantsProps[]>([]);
+    const [filteredPlants, setFilteredPlants] = useState<PlantsProps[]>([]);
+    const [environmentSelected, setEnvironmentSelected] = useState('all');
 
+    function handleEnvironmentSelected(environment: string){
+        setEnvironmentSelected(environment);
 
+        if(environment == 'all')
+            return setFilteredPlants(plants);
+
+        const filtered = plants.filter(plant => 
+            plant.environments.includes(environment));
+
+        setFilteredPlants(filtered);
+    }
     useEffect(() => {
         async function fetchEnviroment(){
             const { data } = await api
@@ -87,7 +98,11 @@ export function PlantSelected(){
                 <FlatList 
                     data={environments}
                     renderItem={({ item }) => (
-                        <EnviromentButton title={item.title} active/>
+                        <EnviromentButton 
+                            title={item.title} 
+                            active={item.key === environmentSelected}
+                            onPress={ () => handleEnvironmentSelected(item.key)}
+                        />
                         
                     )}
                     horizontal
@@ -98,7 +113,7 @@ export function PlantSelected(){
 
             <View style={styles.plants}>
                 <FlatList 
-                    data={plants}
+                    data={filteredPlants}
                     renderItem={({ item }) =>(
                         <PlantCardPrimary data={item}/>
                     )}
