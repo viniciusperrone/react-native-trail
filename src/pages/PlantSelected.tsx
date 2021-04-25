@@ -43,7 +43,8 @@ export function PlantSelected(){
 
     useEffect(() => {
         async function fetchEnviroment(){
-            const { data } = await api.get('plants_environments');
+            const { data } = await api
+            .get('plants_environments?_sort=title&_order=asc');
 
             setEnvironments([
                 {
@@ -59,7 +60,8 @@ export function PlantSelected(){
 
     useEffect(() => {
         async function fetchPlants(){
-            const { data } = await api.get('plants');
+            const { data } = await api
+            .get('plants?_sort=name&order=asc');
 
             setPlants(data);
         }
@@ -100,6 +102,8 @@ export function PlantSelected(){
                     renderItem={({ item }) =>(
                         <PlantCardPrimary data={item}/>
                     )}
+                    showsVerticalScrollIndicator={false}
+                    numColumns={2}
                 />
             </View>
         </View>
@@ -138,6 +142,9 @@ const styles = StyleSheet.create({
         flex: 1,
         paddingHorizontal: 32,
         justifyContent: 'center',
+
+    },
+    contentContainerStyle: {
 
     }
 })

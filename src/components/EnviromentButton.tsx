@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
         height: 40,
         justifyContent: 'center',
         alignItems: 'center',
-        marginRight: 5,
+        marginHorizontal: 5,
         borderRadius: 12
     }, 
     containerActive: {
