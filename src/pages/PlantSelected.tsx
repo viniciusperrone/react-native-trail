@@ -4,7 +4,8 @@ import {
     Text, 
     View,
     StyleSheet,
-    FlatList
+    FlatList,
+    ActivityIndicator
 } from 'react-native';
 
 import { Header } from '../components/Header';
@@ -151,6 +152,7 @@ export function PlantSelected(){
                     numColumns={2}
                     onEndReachedThreshold={0.1}
                     onEndReached={ ({ distanceFromEnd }) => handleFetchMore(distanceFromEnd)}
+                    ListFooterComponent={<ActivityIndicator color={colors.green}/>}
                 />
             </View>
         </View>
