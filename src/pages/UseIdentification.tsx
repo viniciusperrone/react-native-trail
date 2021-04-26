@@ -9,10 +9,13 @@ import {
     KeyboardAvoidingView, 
     Platform,
     TouchableWithoutFeedback,
-    Keyboard
+    Keyboard,
+    Alert
 } from 'react-native';
 
 import { useNavigation } from '@react-navigation/core';
+
+import AsyncStorage from '@react-native-async-storage/async-storage'
 
 
 import Button from '../../src/components/Button';
@@ -43,10 +46,13 @@ export function UserIdentification(){
         setName(value);
     }
 
-    function handleSubmit(){
-        navigation.navigate('Confirmation');
-      }
+    async function handleSubmit(){
+        if(!name)
+            return Alert.alert(`Me diz como chamar você 😉`)
 
+        await AsyncStorage.setItem('@plantmanager:user', name);
+        navigation.navigate('Confirmation');
+    }
     return(
         <SafeAreaView style={styles.conteiner}>
             <KeyboardAvoidingView
