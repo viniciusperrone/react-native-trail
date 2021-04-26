@@ -40,7 +40,7 @@ const AppRoutes: React.FC = () => (
             component={PlantSelected}
         />
         <stackRoutes.Screen 
-            name="PlantSave"
+            name="PlantSaved"
             component={PlantSaved}
         />
 

@@ -93,7 +93,7 @@ export function PlantSelected(){
     }
 
     function handlePlantSelect(plant: PlantsProps){
-        navigation.navigate('PlantSave');
+        navigation.navigate('PlantSaved');
     }
     useEffect(() => {
         async function fetchEnviroment(){
